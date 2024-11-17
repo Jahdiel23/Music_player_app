@@ -42,7 +42,7 @@ class MyDrawer extends StatelessWidget {
                 Navigator.pop(context);
 
                     //navigate to settings
-                Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage(),),);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsPage(),),);
               }     
             ),
           )
