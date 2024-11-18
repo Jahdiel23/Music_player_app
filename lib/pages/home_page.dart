@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:music_player_dreamteam/components/my_drawer.dart';
 import 'package:music_player_dreamteam/models/playlist_provider.dart';
 import 'package:music_player_dreamteam/models/song.dart';
+import 'package:music_player_dreamteam/pages/song_page.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,6 +18,13 @@ class _HomePageState extends State<HomePage> {
     Provider.of<PlaylistProvider>(context, listen: false).currentSongIndex = songIndex;
 
     //navigate to song page
+Navigator.push(
+  context, 
+  MaterialPageRoute(
+    builder: (context) => const SongPage(),
+    ),
+  );
+
   }
 
   @override
