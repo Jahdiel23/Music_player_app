@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
+ // Importa el tema oscuro
 import 'package:music_player_dreamteam/theme/dark_mode.dart';
-import 'package:music_player_dreamteam/theme/light_mode.dart';
+import 'package:music_player_dreamteam/theme/light_mode.dart';  // Importa el tema claro
 
 class ThemeProvider extends ChangeNotifier {
-  // Inicialmente, modo claro
+  // Inicialmente, el tema es claro. 
+  // Esto significa que cuando la aplicación se inicie, el modo claro será el tema por defecto.
   ThemeData _themeData = lightMode;
 
-  // Getter para obtener el tema actual
+  // Getter: Devuelve el tema actual de la aplicación
   ThemeData get themeData => _themeData;
 
-  // Verificar si el modo oscuro está activado
+  // Getter: Verifica si el tema actual es el modo oscuro
   bool get isDarkMode => _themeData == darkMode;
 
-  // Setear un nuevo tema
-  set themeData(ThemeData themeData) {
-    _themeData = themeData;
-    // Notificar a los oyentes (UI) para que se actualicen
-    notifyListeners();
+  // Setter: Permite cambiar el tema de la aplicación.
+  // Al cambiar el tema, se notifica a los widgets para que se reconstruyan.
+  set themeData(ThemeData newThemeData) {
+    _themeData = newThemeData;
+    notifyListeners();  // Notifica a los widgets que están escuchando este cambio
   }
 
-  // Método para alternar entre tema claro y oscuro
+  // Método para alternar entre el modo claro y oscuro
   void toggleTheme() {
+    // Si el tema actual es claro, cambia a oscuro
     if (_themeData == lightMode) {
-      _themeData = darkMode;
+      themeData = darkMode;
     } else {
-      _themeData = lightMode;
+      // Si el tema actual es oscuro, cambia a claro
+      themeData = lightMode;
     }
-    // Notificar a los oyentes después de cambiar el tema
-    notifyListeners();
   }
 }
